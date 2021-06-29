@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sbs.exam.app.dto.Article;
+import com.sbs.exam.app.dto.Member;
 import com.sbs.exam.util.Util;
 
 public class ArticleRepository {
@@ -15,12 +16,13 @@ public class ArticleRepository {
 		lastId = 0;
 	}
 
-	public int write(String title, String body) {
+	public int write(int boardId, int memberId, String title, String body) {
 		int id = lastId + 1;
 		String regDate = Util.getNowDateStr();
 		String updateDate = regDate;
+		
 
-		Article article = new Article(id, regDate, updateDate, title, body);
+		Article article = new Article(id, regDate, updateDate, boardId, memberId, title, body);
 		articles.add(article);
 
 		lastId = id;

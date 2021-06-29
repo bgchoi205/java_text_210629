@@ -11,6 +11,8 @@ public class Article extends Object {
 	private int id;
 	private String regDate;
 	private String updateDate;
+	private int boardId;
+	private int memberId;
 	private String title;
 	private String body;
 }

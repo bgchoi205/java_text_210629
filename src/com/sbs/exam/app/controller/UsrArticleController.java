@@ -118,12 +118,18 @@ public class UsrArticleController extends Controller {
 	}
 
 	private void actionWrite(Rq rq) {
+		System.out.printf("게시판 번호 : ");
+		int boardId = Integer.parseInt(sc.nextLine());
 		System.out.printf("제목 : ");
 		String title = sc.nextLine().trim();
 		System.out.printf("내용 : ");
 		String body = sc.nextLine().trim();
+		
+		int memberId = rq.getLoginedMember().getId();
 
-		int id = articleService.write(title, body);
+		int id = articleService.write(boardId, memberId, title, body);
+		
+		System.out.println(articleService.getArticleById(id));
 
 		System.out.printf("%d번 게시물이 생성되었습니다.\n", id);
 	}
